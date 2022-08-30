@@ -1,0 +1,27 @@
+<markdown [data]="markdown"></markdown>
+
+<div
+  #activeList="cdkDropList"
+  class="box-list"
+  cdkDropList
+  cdkDropListOrientation="vertical"
+  [cdkDropListData]="activeCustomers"
+  [cdkDropListConnectedTo]="[inactiveList]"
+  (cdkDropListDropped)="drop($event)"
+>
+  <div class="drag-box" *ngFor="let customer of activeCustomers" cdkDrag>
+    {{ customer }}
+  </div>
+</div>
+
+<div
+  #inactiveList="cdkDropList"
+  class="box-list"
+  cdkDropList
+  [cdkDropListData]="inactiveCustomers"
+  [cdkDropListConnectedTo]="[activeList]"
+  (cdkDropListDropped)="drop($event)"
+>
+</div>
+
+<pre>{{ pre }}</pre>
