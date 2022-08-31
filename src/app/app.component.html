@@ -9,7 +9,7 @@
   [cdkDropListConnectedTo]="[inactiveList]"
   (cdkDropListDropped)="drop($event)"
 >
-  <div class="drag-box" *ngFor="let customer of activeCustomers" cdkDrag>
+  <div class="drag-box" *ngFor="let customer of activeCustomers" cdkDrag >
     {{ customer }}
   </div>
 </div>
@@ -22,6 +22,11 @@
   [cdkDropListConnectedTo]="[activeList]"
   (cdkDropListDropped)="drop($event)"
 >
+<div [style.height.px]="parentdiv" style="overflow:hidden;">
+  <div *ngFor="let customer of inactiveCustomers" class="seconddiv" [style.height.px]="parentdiv " > 
+    <img [style.height.px]="parentdiv" (load)="imageLoad()"  #content id="content" src="../assets/depositphotos_6591667-stock-photo-close-up-of-beautiful-womanish.jpg" alt="">
+  </div>
+</div>
 </div>
 
 <pre>{{ pre }}</pre>

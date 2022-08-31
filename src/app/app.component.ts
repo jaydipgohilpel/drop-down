@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
@@ -8,7 +8,9 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  @ViewChild('content') elementView: ElementRef;
+  parentdiv:string='';
+  contentHeight: number;
   activeCustomers = [
     'John',
     'Watson',
@@ -17,10 +19,22 @@ export class AppComponent {
 
   inactiveCustomers = [
     'Adam',
-    'Jack',
-    'Katherin'
+   
   ];
+  constructor(){
 
+  }
+  ngAfterViewInit() {
+   
+    
+  }
+  imageLoad()
+  {
+    // debugger;
+    this.parentdiv=this.elementView.nativeElement.offsetHeight.toString();
+    // this.parentdiv+='!important'
+    console.log( this.elementView.nativeElement.offsetHeight);
+}
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       console.log('dropped Event', `> dropped '${event.item.data}' into '${event.container.id}'`);
